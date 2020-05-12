@@ -1,0 +1,27 @@
+.project {
+  $this: &;
+  cursor: pointer;
+
+  &__image {
+    width: 100%;
+    height: 300px;
+    background-size: cover;
+    background-position: center center;
+  }
+
+  h6 {
+    font-size: 17px;
+  }
+
+  &.row-type {
+    display: flex;
+    cursor: initial;
+
+    #{$this} {
+      &__image {
+        min-width: 300px;
+        max-width: 300px;
+      }
+    }
+  }
+}

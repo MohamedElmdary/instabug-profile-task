@@ -9,6 +9,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatCardModule } from '@angular/material/card';
 import { MatRippleModule } from '@angular/material/core';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @NgModule({
   exports: [
@@ -20,7 +21,8 @@ import { MatDividerModule } from '@angular/material/divider';
     MatChipsModule,
     MatCardModule,
     MatRippleModule,
-    MatDividerModule
+    MatDividerModule,
+    MatButtonToggleModule
   ]
 })
 export class AppMaterialModule {}

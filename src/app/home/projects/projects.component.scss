@@ -1,0 +1,33 @@
+#projects {
+  padding-top: 20px;
+
+  header.row {
+    justify-content: space-between;
+
+    h2 {
+      margin-bottom: 15px;
+    }
+  }
+
+  .projects-row {
+    flex-wrap: wrap;
+
+    > div {
+      //   transition: flex-basis 0.3s linear;
+      padding: 15px;
+      flex-basis: 100%;
+    }
+
+    &.grid > div {
+      flex-basis: calc(100% / 3);
+
+      @media (max-width: 768px) {
+        flex-basis: calc(100% / 2);
+      }
+
+      @media (max-width: 600px) {
+        flex-basis: 100%;
+      }
+    }
+  }
+}

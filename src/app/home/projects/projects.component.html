@@ -1,3 +1,46 @@
 <section id="projects">
-  here ?
+  <div class="container">
+    <header class="row">
+      <h2 class="mat-display-1">Projects</h2>
+      <div [ngStyle]="{ display: isTable ? 'none' : 'block' }">
+        <mat-button-toggle-group
+          value="rows"
+          name="gridType"
+          aria-label="Grid Type"
+          #gridType="matButtonToggleGroup"
+        >
+          <mat-button-toggle value="grid">
+            <mat-icon>
+              view_quilt
+            </mat-icon>
+          </mat-button-toggle>
+          <mat-button-toggle value="rows">
+            <mat-icon>
+              view_list
+            </mat-icon>
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+    </header>
+    <div
+      class="row projects-row"
+      [ngClass]="{ grid: isTable || gridType.value === 'grid' }"
+    >
+      <div app-project [isRow]="!isTable && gridType.value === 'rows'"></div>
+      <div app-project [isRow]="!isTable && gridType.value === 'rows'"></div>
+      <div app-project [isRow]="!isTable && gridType.value === 'rows'"></div>
+      <div app-project [isRow]="!isTable && gridType.value === 'rows'"></div>
+      <div app-project [isRow]="!isTable && gridType.value === 'rows'"></div>
+      <div app-project [isRow]="!isTable && gridType.value === 'rows'"></div>
+      <div app-project [isRow]="!isTable && gridType.value === 'rows'"></div>
+      <div app-project [isRow]="!isTable && gridType.value === 'rows'"></div>
+      <div app-project [isRow]="!isTable && gridType.value === 'rows'"></div>
+      <div app-project [isRow]="!isTable && gridType.value === 'rows'"></div>
+      <div app-project [isRow]="!isTable && gridType.value === 'rows'"></div>
+      <div app-project [isRow]="!isTable && gridType.value === 'rows'"></div>
+      <div app-project [isRow]="!isTable && gridType.value === 'rows'"></div>
+      <div app-project [isRow]="!isTable && gridType.value === 'rows'"></div>
+      <div app-project [isRow]="!isTable && gridType.value === 'rows'"></div>
+    </div>
+  </div>
 </section>

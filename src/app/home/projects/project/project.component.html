@@ -1,0 +1,57 @@
+<mat-card
+  class="project"
+  matRipple
+  [matRippleDisabled]="isRow"
+  [ngClass]="{ 'row-type': isRow }"
+>
+  <div
+    class="project__image"
+    [ngStyle]="{
+      backgroundImage: 'url(http://placehold.it/250x250)',
+      marginRight: isRow ? '15px' : 0
+    }"
+  ></div>
+  <div [ngStyle]="{ textAlign: isRow ? 'left' : 'center' }">
+    <h5
+      [ngStyle]="{
+        marginTop: '10px',
+        font: '500 20px/32px Roboto, \'Helvetica Neue\', sans-serif'
+      }"
+    >
+      Angular Market
+    </h5>
+    <ng-template [ngIf]="isRow">
+      <div>
+        <h6 style="font-size: 17px">
+          Description:
+        </h6>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae
+          numquam assumenda ducimus corporis, labore non. Natus tenetur facere
+          debitis officiis aperiam error nihil numquam delectus nulla similique
+          obcaecati a, nemo nobis voluptatum dignissimos alias, modi maxime,
+          incidunt facilis eligendi nostrum!
+        </p>
+      </div>
+      <div>
+        <h6 style="font-size: 17px">
+          Technologies:
+        </h6>
+        <mat-chip-list aria-label="Fish selection">
+          <mat-chip
+            *ngFor="let skill of ['1', '2', '3']"
+            color="primary"
+            selected
+          >
+            {{ skill }}
+          </mat-chip>
+        </mat-chip-list>
+      </div>
+      <div [ngStyle]="{ marginTop: '15px' }">
+        <button mat-button color="warn" routerLink="/project/id">
+          Show Details
+        </button>
+      </div>
+    </ng-template>
+  </div>
+</mat-card>

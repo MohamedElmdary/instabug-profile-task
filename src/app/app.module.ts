@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './home/about/about.component';
 import { ProjectsComponent } from './home/projects/projects.component';
 import { ContactsComponent } from './home/contacts/contacts.component';
+import { ProjectComponent } from './home/projects/project/project.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ContactsComponent } from './home/contacts/contacts.component';
     HomeComponent,
     AboutComponent,
     ProjectsComponent,
-    ContactsComponent
+    ContactsComponent,
+    ProjectComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

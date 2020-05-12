@@ -28,6 +28,10 @@ export class AppComponent implements OnInit {
     if (isPlatformBrowser(this.platformId)) {
       // because this component will never be destroied
       // there is no need to remove "subscribe"
+      /**
+       * @bug
+       * scrolling would cause problem if u went to same fragment
+       */
       this.router.events
         .pipe(
           filter(event => event instanceof NavigationEnd),
