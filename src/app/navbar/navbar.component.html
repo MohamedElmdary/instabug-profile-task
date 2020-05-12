@@ -1,0 +1,23 @@
+<mat-toolbar color="primary">
+  <button
+    mat-icon-button
+    (click)="sidenav.opened = !sidenav.opened"
+    *ngIf="isMobile"
+  >
+    <mat-icon>
+      menu
+    </mat-icon>
+  </button>
+  <span>Mohamed</span>
+  <span class="spacer"></span>
+  <ng-template [ngIf]="!isMobile">
+    <button mat-button *ngFor="let link of links" [routerLink]="link.route">
+      {{ link.name }}
+    </button>
+  </ng-template>
+  <button mat-icon-button (click)="toggleTheme()">
+    <mat-icon>
+      {{ isDark ? "brightness_5" : "nights_stay" }}
+    </mat-icon>
+  </button>
+</mat-toolbar>

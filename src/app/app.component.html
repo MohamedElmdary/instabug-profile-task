@@ -1,3 +1,12 @@
-<h1>
-  hello world xx
-</h1>
+<mat-drawer-container class="example-container">
+  <mat-drawer #sideDrawer mode="over">
+    Drawer content
+  </mat-drawer>
+  <mat-drawer-content>
+    <app-navbar [sidenav]="sideDrawer"></app-navbar>
+    <main>
+      here
+      <router-outlet></router-outlet>
+    </main>
+  </mat-drawer-content>
+</mat-drawer-container>

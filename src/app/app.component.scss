@@ -1,0 +1,24 @@
+mat-drawer-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+
+  mat-drawer {
+    width: 280px;
+  }
+
+  mat-drawer-content {
+    main {
+      overflow-x: hidden;
+      overflow-y: auto;
+      will-change: transform;
+      height: calc(100vh - 64px);
+
+      @media (max-width: 599px) {
+        height: calc(100vh - 56px);
+      }
+    }
+  }
+}
