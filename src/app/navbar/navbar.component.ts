@@ -10,6 +10,7 @@ import { NavLink } from '@type/navbar';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { isPlatformBrowser } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -26,25 +27,17 @@ export class NavbarComponent implements OnInit {
   }
 
   readonly links: NavLink[] = [
-    {
-      name: 'home',
-      route: '/'
-    },
-    {
-      name: 'projects',
-      route: '/#projects'
-    },
-    {
-      name: 'contacts',
-      route: '/#contacts'
-    }
+    new NavLink('home', 'about'),
+    new NavLink('projects', 'projects'),
+    new NavLink('contacts', 'contacts')
   ];
 
   constructor(
     private observer: BreakpointObserver,
     // tslint:disable-next-line: ban-types
     @Inject(PLATFORM_ID) private platformId: Object,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -72,5 +65,9 @@ export class NavbarComponent implements OnInit {
         `./assets/css/${this.isDark ? 'purple-green.css' : 'indigo-pink.css'}`
       );
     }
+  }
+
+  navigate(link: NavLink) {
+    this.router.navigate([link.route], { fragment: link.fragment });
   }
 }

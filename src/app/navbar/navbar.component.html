@@ -11,7 +11,7 @@
   <span>Mohamed</span>
   <span class="spacer"></span>
   <ng-template [ngIf]="!isMobile">
-    <button mat-button *ngFor="let link of links" [routerLink]="link.route">
+    <button mat-button *ngFor="let link of links" (click)="navigate(link)">
       {{ link.name }}
     </button>
   </ng-template>
