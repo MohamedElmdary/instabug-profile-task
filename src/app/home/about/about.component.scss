@@ -1,0 +1,41 @@
+.about {
+  padding: 20px 0;
+
+  &__img {
+    max-width: 35%;
+    min-width: 400px;
+    max-height: 100vh;
+    padding-right: 20px;
+
+    mat-card {
+      width: 100%;
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  [class^="mat-display-"] {
+    margin: 15px 0;
+  }
+
+  &__info {
+    &__name {
+      h1 {
+        margin: 0 !important;
+      }
+    }
+
+    &__skills {
+      padding-bottom: 15px;
+    }
+  }
+
+  iframe {
+    width: 100%;
+    max-width: 800px;
+    height: 500px;
+    display: block;
+    margin: 0 auto;
+  }
+}

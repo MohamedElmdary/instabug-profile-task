@@ -7,9 +7,20 @@ import { AppRouterModule } from './app-router.module';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './home/about/about.component';
+import { ProjectsComponent } from './home/projects/projects.component';
+import { ContactsComponent } from './home/contacts/contacts.component';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent],
+  declarations: [
+    AppComponent,
+    NavbarComponent,
+    HomeComponent,
+    AboutComponent,
+    ProjectsComponent,
+    ContactsComponent
+  ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserAnimationsModule,

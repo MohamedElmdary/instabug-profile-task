@@ -1,0 +1,70 @@
+<section class="about">
+  <div class="container">
+    <div class="row">
+      <div class="about__img">
+        <mat-card matRipple>
+          <img src="../../../assets/images/me.jpg" alt="my picture" />
+        </mat-card>
+      </div>
+      <div class="about__info">
+        <div class="about__info__name">
+          <h1 class="mat-display-2">
+            Mohamed Rabie Elmdary
+          </h1>
+          <p>
+            Mean Stack Developer.
+          </p>
+        </div>
+        <mat-divider></mat-divider>
+        <div>
+          <h4 class="mat-display-1">
+            Education
+          </h4>
+          <p>
+            <span [ngStyle]="{ display: 'block' }">CSED - 2016-2021</span>
+            <span>
+              A student in Mansoura university, studying computer science and
+              embedded systems
+            </span>
+          </p>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="about__info__skills">
+          <h4 class="mat-display-1">
+            Skills
+          </h4>
+          <mat-chip-list aria-label="Fish selection">
+            <mat-chip *ngFor="let skill of skills" color="primary" selected>
+              {{ skill }}
+            </mat-chip>
+          </mat-chip-list>
+        </div>
+        <mat-divider></mat-divider>
+        <div [ngStyle]="{ paddingBottom: '15px' }">
+          <h4 class="mat-display-1">
+            CV
+          </h4>
+          <a download href="../../../assets/pdf/Elmdary-CV.pdf">
+            <button mat-button color="warn">
+              <mat-icon [ngStyle]="{ marginRight: '10px' }">
+                cloud_download
+              </mat-icon>
+              Download CV
+            </button>
+          </a>
+        </div>
+        <mat-divider></mat-divider>
+      </div>
+    </div>
+    <div>
+      <h4 class="mat-display-1">Experience</h4>
+      <iframe
+        [src]="ytdLink"
+        frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </div>
+</section>
+<mat-divider></mat-divider>
