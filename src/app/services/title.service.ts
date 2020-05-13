@@ -20,7 +20,6 @@ export class TitleService {
   }
 
   setPreviousTitle() {
-    console.log(this.currentTitle);
     if (this.timeout) {
       clearTimeout(this.timeout);
     }

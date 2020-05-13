@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { TitleService } from 'app/services/title.service';
 
 @Component({
   selector: 'app-page-not-found',
   templateUrl: './page-not-found.component.html',
   styleUrls: ['./page-not-found.component.scss']
 })
-export class PageNotFoundComponent {
+export class PageNotFoundComponent implements OnInit {
   get sizeClass(): string {
     if (this.observer.isMatched('(max-width: 375px)')) {
       return 'mat-display-1';
@@ -18,5 +19,12 @@ export class PageNotFoundComponent {
     return 'mat-display-4';
   }
 
-  constructor(private observer: BreakpointObserver) {}
+  constructor(
+    private observer: BreakpointObserver,
+    private titleService: TitleService
+  ) {}
+
+  ngOnInit() {
+    this.titleService.setTitle('CV | Not found page');
+  }
 }
