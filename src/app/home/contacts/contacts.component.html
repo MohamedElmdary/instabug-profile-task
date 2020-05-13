@@ -1,1 +1,47 @@
-<p>contacts works!</p>
+<section id="contacts" class="contacts">
+  <div class="container">
+    <h2 class="mat-display-1">
+      Contacts
+    </h2>
+    <mat-card class="contacts__form">
+      <div class="contacts__form__image"></div>
+      <form>
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Subject</mat-label>
+
+          <input matInput />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Message</mat-label>
+
+          <textarea [ngStyle]="{ height: '200px' }" matInput></textarea>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Attachements</mat-label>
+
+          <input matInput />
+        </mat-form-field>
+        <div class="row" [ngStyle]="{ justifyContent: 'center' }">
+          <button mat-raised-button color="primary" type="submit">
+            Submit
+          </button>
+        </div>
+        <mat-card @sumitAnimation class="submit-animation">
+          <div>
+            <h6 class="mat-display-1">
+              Thanks For Contact Us!
+            </h6>
+            <p>Successfully Sent Message.</p>
+            <mat-icon>
+              check_circle_outline
+            </mat-icon>
+          </div>
+        </mat-card>
+      </form>
+    </mat-card>
+  </div>
+</section>
