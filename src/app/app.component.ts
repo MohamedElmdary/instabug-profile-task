@@ -8,6 +8,7 @@ import {
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { filter, map, delay } from 'rxjs/operators';
 import { ScrollPageService } from './services/scroll-page.service';
+import { NavLink, links } from '@type/navbar';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,9 @@ import { ScrollPageService } from './services/scroll-page.service';
 })
 export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('main') main: ElementRef;
+  sideOpened = false;
+
+  readonly links: NavLink[] = links;
 
   constructor(
     private router: Router,
@@ -37,5 +41,14 @@ export class AppComponent implements OnInit, AfterViewInit {
       .subscribe(el => {
         this.scrollPageService.scrollTo(el);
       });
+  }
+
+  navigate(link: NavLink) {
+    this.sideOpened = false;
+    if (this.router.url === `/#${link.fragment}`) {
+      this.scrollPageService.scrollTo(link.fragment);
+      return;
+    }
+    this.router.navigate([link.route], { fragment: link.fragment });
   }
 }

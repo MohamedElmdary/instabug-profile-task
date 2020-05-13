@@ -11,7 +11,12 @@
   <span>Mohamed</span>
   <span class="spacer"></span>
   <ng-template [ngIf]="!isMobile">
-    <button mat-button *ngFor="let link of links" (click)="navigate(link)">
+    <button
+      mat-button
+      *ngFor="let link of links"
+      (click)="navigate(link)"
+      [ngStyle]="{ textTransform: 'capitalize' }"
+    >
       {{ link.name }}
     </button>
   </ng-template>

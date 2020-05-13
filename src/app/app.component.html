@@ -1,6 +1,13 @@
-<mat-drawer-container class="example-container">
-  <mat-drawer #sideDrawer mode="over">
-    Drawer content
+<mat-drawer-container>
+  <mat-drawer #sideDrawer mode="over" [(opened)]="sideOpened">
+    <button
+      class="sidenav-item"
+      mat-button
+      *ngFor="let link of links"
+      (click)="navigate(link)"
+    >
+      {{ link.name }}
+    </button>
   </mat-drawer>
   <mat-drawer-content>
     <app-navbar [sidenav]="sideDrawer"></app-navbar>

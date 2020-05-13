@@ -6,7 +6,7 @@ import {
   Inject,
   OnInit
 } from '@angular/core';
-import { NavLink } from '@type/navbar';
+import { NavLink, links } from '@type/navbar';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { isPlatformBrowser } from '@angular/common';
@@ -27,11 +27,7 @@ export class NavbarComponent implements OnInit {
     return this.observer.isMatched('(max-width: 599px)');
   }
 
-  readonly links: NavLink[] = [
-    new NavLink('home', 'about'),
-    new NavLink('projects', 'projects'),
-    new NavLink('contacts', 'contacts')
-  ];
+  readonly links: NavLink[] = links;
 
   constructor(
     private observer: BreakpointObserver,
@@ -39,7 +35,7 @@ export class NavbarComponent implements OnInit {
     @Inject(PLATFORM_ID) private platformId: Object,
     private renderer: Renderer2,
     private router: Router,
-    private ScrollPageService: ScrollPageService
+    private scrollPageService: ScrollPageService
   ) {}
 
   ngOnInit() {
@@ -71,7 +67,7 @@ export class NavbarComponent implements OnInit {
 
   navigate(link: NavLink) {
     if (this.router.url === `/#${link.fragment}`) {
-      this.ScrollPageService.scrollTo(link.fragment);
+      this.scrollPageService.scrollTo(link.fragment);
       return;
     }
     this.router.navigate([link.route], { fragment: link.fragment });

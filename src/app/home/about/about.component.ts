@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-about',
@@ -35,5 +36,12 @@ export class AboutComponent {
     'Redux'
   ];
 
-  constructor(private sanitizer: DomSanitizer) {}
+  get isTablet() {
+    return this.observe.isMatched('(max-width: 768px)');
+  }
+
+  constructor(
+    private sanitizer: DomSanitizer,
+    private observe: BreakpointObserver
+  ) {}
 }

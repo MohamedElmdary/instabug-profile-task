@@ -2,13 +2,13 @@
   <div class="container">
     <div class="row">
       <div class="about__img">
-        <mat-card matRipple>
+        <mat-card matRipple [ngStyle]="{ maxWidth: '350px', margin: '0 auto' }">
           <img src="../../../assets/images/me.jpg" alt="my picture" />
         </mat-card>
       </div>
       <div class="about__info">
         <div class="about__info__name">
-          <h1 class="mat-display-2">
+          <h1 [attr.class]="isTablet ? 'mat-display-1' : 'mat-display-2'">
             Mohamed Rabie Elmdary
           </h1>
           <p>
