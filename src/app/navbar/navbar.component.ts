@@ -11,6 +11,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { isPlatformBrowser } from '@angular/common';
 import { Router } from '@angular/router';
+import { ScrollPageService } from 'app/services/scroll-page.service';
 
 @Component({
   selector: 'app-navbar',
@@ -37,7 +38,8 @@ export class NavbarComponent implements OnInit {
     // tslint:disable-next-line: ban-types
     @Inject(PLATFORM_ID) private platformId: Object,
     private renderer: Renderer2,
-    private router: Router
+    private router: Router,
+    private ScrollPageService: ScrollPageService
   ) {}
 
   ngOnInit() {
@@ -68,6 +70,10 @@ export class NavbarComponent implements OnInit {
   }
 
   navigate(link: NavLink) {
+    if (this.router.url === `/#${link.fragment}`) {
+      this.ScrollPageService.scrollTo(link.fragment);
+      return;
+    }
     this.router.navigate([link.route], { fragment: link.fragment });
   }
 }
