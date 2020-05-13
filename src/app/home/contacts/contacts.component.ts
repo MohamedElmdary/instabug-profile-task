@@ -1,103 +1,40 @@
-import { Component, OnInit } from '@angular/core';
-import {
-  trigger,
-  transition,
-  style,
-  query,
-  animate,
-  keyframes,
-  animateChild
-} from '@angular/animations';
+import { Component } from '@angular/core';
+
+import { sumitAnimation } from '@animations/contacts';
+import { FormBuilder, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-contacts',
   templateUrl: './contacts.component.html',
   styleUrls: ['./contacts.component.scss'],
-  animations: [
-    trigger('sumitAnimation', [
-      transition(':enter', [
-        style({
-          position: 'absolute',
-          top: '100%',
-          left: '50%',
-          transform: 'translate(-50%, 50%)',
-          height: '30px',
-          width: '30px',
-          borderRadius: '50%',
-          willChange: 'transform, top, height, width'
-        }),
-        query(
-          '@sumitAnimation > div > *',
-          style({
-            transform: 'translateY(-15px)',
-            opacity: 0,
-            willChange: 'opacity, transform'
-          }),
-          { optional: true }
-        ),
-        animate(
-          800,
-          keyframes([
-            style({
-              offset: 1 / 6,
-              top: '50%',
-              transform: 'translate(-50%, -50%)'
-            }),
-            style({
-              offset: 2 / 6,
-              borderRadius: 0
-            }),
-            style({
-              offset: 4 / 6,
-              height: '100%'
-            }),
-            style({
-              offset: 1,
-              width: '100%'
-            })
-          ])
-        ),
-        query(
-          '@sumitAnimation > div > h6',
-          [
-            animate(
-              150,
-              style({
-                opacity: 1,
-                transform: 'translateX(0)'
-              })
-            )
-          ],
-          { optional: true }
-        ),
-        query(
-          '@sumitAnimation > div > p',
-          [
-            animate(
-              150,
-              style({
-                opacity: 1,
-                transform: 'translateX(0)'
-              })
-            )
-          ],
-          { optional: true }
-        ),
-        query(
-          '@sumitAnimation > div > mat-icon',
-          [
-            animate(
-              150,
-              style({
-                opacity: 1,
-                transform: 'translateX(0)'
-              })
-            )
-          ],
-          { optional: true }
-        )
-      ])
-    ])
-  ]
+  animations: [sumitAnimation]
 })
-export class ContactsComponent {}
+export class ContactsComponent {
+  isSubmited = false;
+
+  messageForm = this.fb.group({
+    email: ['', [Validators.email, Validators.required]],
+    subject: ['', [Validators.required, Validators.minLength(5)]],
+    message: ['', [Validators.maxLength(500)]]
+  });
+
+  get email() {
+    return this.messageForm.get('email') as FormControl;
+  }
+
+  get subject() {
+    return this.messageForm.get('subject') as FormControl;
+  }
+
+  get message() {
+    return this.messageForm.get('message') as FormControl;
+  }
+
+  constructor(private fb: FormBuilder) {}
+
+  submitHandler() {
+    // some logic to handle submition
+    this.isSubmited = true;
+    console.log(this.messageForm.value);
+  }
+}

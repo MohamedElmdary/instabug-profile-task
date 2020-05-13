@@ -5,32 +5,54 @@
     </h2>
     <mat-card class="contacts__form">
       <div class="contacts__form__image"></div>
-      <form>
+      <form [formGroup]="messageForm" (ngSubmit)="submitHandler()">
         <mat-form-field appearance="fill">
           <mat-label>Email</mat-label>
-          <input matInput />
+          <input formControlName="email" matInput />
+          <mat-error *ngIf="email.errors?.required">
+            Email is required.
+          </mat-error>
+          <mat-error *ngIf="email.errors?.email">
+            The email you enter is incorrect.
+          </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>Subject</mat-label>
-
-          <input matInput />
+          <input matInput formControlName="subject" />
+          <mat-error *ngIf="subject.errors?.required">
+            Subject is required.
+          </mat-error>
+          <mat-error *ngIf="subject.errors?.minlength">
+            Subject min length is 5.
+          </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>Message</mat-label>
-
-          <textarea [ngStyle]="{ height: '200px' }" matInput></textarea>
+          <textarea
+            formControlName="message"
+            [ngStyle]="{ height: '200px' }"
+            matInput
+          ></textarea>
+          <mat-error *ngIf="message.errors?.maxlength">
+            Message max length is 500.
+          </mat-error>
+          <mat-hint align="end">{{ message.value.length }} / 500</mat-hint>
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>Attachements</mat-label>
-
           <input matInput />
         </mat-form-field>
         <div class="row" [ngStyle]="{ justifyContent: 'center' }">
-          <button mat-raised-button color="primary" type="submit">
+          <button
+            [disabled]="messageForm.invalid"
+            mat-raised-button
+            color="primary"
+            type="submit"
+          >
             Submit
           </button>
         </div>
-        <mat-card @sumitAnimation class="submit-animation">
+        <mat-card *ngIf="isSubmited" @sumitAnimation class="submit-animation">
           <div>
             <h6 class="mat-display-1">
               Thanks For Contact Us!
