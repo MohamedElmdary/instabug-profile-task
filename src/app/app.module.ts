@@ -13,6 +13,7 @@ import { AboutComponent } from './home/about/about.component';
 import { ProjectsComponent } from './home/projects/projects.component';
 import { ContactsComponent } from './home/contacts/contacts.component';
 import { ProjectComponent } from './home/projects/project/project.component';
+import { FooterComponent } from './home/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ProjectComponent } from './home/projects/project/project.component';
     AboutComponent,
     ProjectsComponent,
     ContactsComponent,
-    ProjectComponent
+    ProjectComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

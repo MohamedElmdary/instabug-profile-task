@@ -1,0 +1,45 @@
+<section class="footer">
+  <div class="container">
+    <div class="footer__social">
+      <div *ngFor="let link of links">
+        <mat-card
+          matRipple
+          [ngStyle]="{
+            padding: 0,
+            display: 'inline-block',
+            borderRadius: '50%'
+          }"
+          [matTooltip]="link.name | titlecase"
+        >
+          <a
+            [href]="link.link"
+            target="_blank"
+            [ngStyle]="{ color: 'transparent' }"
+          >
+            <button mat-icon-button>
+              <img
+                [ngStyle]="{ width: '20px', height: '20px' }"
+                [src]="'../../../assets/images/social/' + link.name + '.svg'"
+                alt="codepen"
+              />
+            </button>
+          </a>
+        </mat-card>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <footer>
+      <p>
+        <span>
+          Made With
+        </span>
+        <mat-icon>
+          favorite
+        </mat-icon>
+        <mat-icon>
+          favorite
+        </mat-icon>
+      </p>
+    </footer>
+  </div>
+</section>
