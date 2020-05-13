@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectsService } from 'app/services/projects.service';
 import { Project } from '@type/project';
+import { Meta } from '@angular/platform-browser';
+import { TitleService } from 'app/services/title.service';
 
 @Component({
   selector: 'app-project-page',
@@ -14,7 +16,9 @@ export class ProjectPageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private projectsService: ProjectsService,
-    private router: Router
+    private router: Router,
+    private meta: Meta,
+    private titleService: TitleService
   ) {}
 
   ngOnInit() {
@@ -23,6 +27,12 @@ export class ProjectPageComponent implements OnInit {
     );
     if (!this.project) {
       this.router.navigate(['/404']);
+      return;
     }
+    this.titleService.setTitle(`PROJECT | ${this.project.title}`);
+    this.meta.addTags([
+      { property: 'og:type', content: 'Project Page' },
+      { property: 'og:title', content: this.project.title }
+    ]);
   }
 }

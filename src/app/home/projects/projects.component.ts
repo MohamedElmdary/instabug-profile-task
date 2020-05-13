@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { ProjectsService } from 'app/services/projects.service';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-projects',

@@ -3,12 +3,14 @@ import {
   OnInit,
   ViewChild,
   ElementRef,
-  AfterViewInit
+  AfterViewInit,
+  HostListener
 } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { filter, map, delay } from 'rxjs/operators';
 import { ScrollPageService } from './services/scroll-page.service';
 import { NavLink, links } from '@type/navbar';
+import { TitleService } from './services/title.service';
 
 @Component({
   selector: 'app-root',
@@ -18,13 +20,24 @@ import { NavLink, links } from '@type/navbar';
 export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('main') main: ElementRef;
   sideOpened = false;
-
   readonly links: NavLink[] = links;
+
+  @HostListener('window:blur')
+  public onWindowBlur() {
+    this.titleService.blur();
+  }
+
+  @HostListener('window:focus')
+  public onWindowFocus() {
+    this.titleService.focus();
+    this.titleService.setPreviousTitle();
+  }
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private scrollPageService: ScrollPageService
+    private scrollPageService: ScrollPageService,
+    private titleService: TitleService
   ) {}
 
   ngAfterViewInit() {
