@@ -7,7 +7,7 @@ import {
   ElementRef
 } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
-import { filter, map } from 'rxjs/operators';
+import { filter, map, delay } from 'rxjs/operators';
 import { isPlatformBrowser } from '@angular/common';
 
 @Component({
@@ -36,13 +36,14 @@ export class AppComponent implements OnInit {
         .pipe(
           filter(event => event instanceof NavigationEnd),
           map(() => this.route.snapshot.fragment),
-          filter(fragment => !!fragment),
+          // filter(fragment => !!fragment),
           map(id => document.getElementById(id)),
-          filter(el => !!el)
+          // filter(el => !!el),
+          delay(250)
         )
         .subscribe(el => {
           this.main.nativeElement.scrollTo({
-            top: el.offsetTop,
+            top: (el || { offsetTop: 0 }).offsetTop,
             behavior: 'smooth'
           });
         });

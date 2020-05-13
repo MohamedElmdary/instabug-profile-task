@@ -1,0 +1,16 @@
+<section class="slider">
+  <div class="row">
+    <div class="slider__dots">
+      <mat-card
+        *ngFor="let image of images; let i = index"
+        matRipple
+        (click)="selectImage(i)"
+      >
+        <img [src]="image" [alt]="'image' + i" />
+      </mat-card>
+    </div>
+    <mat-card class="slider__preview" matRipple>
+      <img [src]="selectedImage" alt="preview" />
+    </mat-card>
+  </div>
+</section>

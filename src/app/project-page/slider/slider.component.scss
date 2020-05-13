@@ -1,0 +1,35 @@
+.slider {
+  padding-top: 20px;
+
+  .row {
+    justify-content: center;
+  }
+
+  &__dots {
+    flex-basis: 100px;
+    margin-right: 20px;
+    > mat-card {
+      padding: 5px;
+      height: 110px;
+      cursor: pointer;
+
+      &:not(:last-of-type) {
+        margin-bottom: 10px;
+      }
+
+      > img {
+        width: 100px;
+        height: 100px;
+      }
+    }
+  }
+
+  &__preview {
+    flex-basis: calc(100% - 100px);
+    max-width: 500px;
+
+    > img {
+      width: 100%;
+    }
+  }
+}

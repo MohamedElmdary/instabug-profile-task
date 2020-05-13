@@ -3,11 +3,12 @@
   matRipple
   [matRippleDisabled]="isRow"
   [ngClass]="{ 'row-type': isRow }"
+  [routerLink]="isRow ? null : '/project/' + project.id"
 >
   <div
     class="project__image"
     [ngStyle]="{
-      backgroundImage: 'url(http://placehold.it/250x250)',
+      backgroundImage: 'url(' + project.thumbnail + ')',
       marginRight: isRow ? '15px' : 0
     }"
   ></div>
@@ -18,7 +19,7 @@
         font: '500 20px/32px Roboto, \'Helvetica Neue\', sans-serif'
       }"
     >
-      Angular Market
+      {{ project.title }}
     </h5>
     <ng-template [ngIf]="isRow">
       <div>
@@ -26,11 +27,7 @@
           Description:
         </h6>
         <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae
-          numquam assumenda ducimus corporis, labore non. Natus tenetur facere
-          debitis officiis aperiam error nihil numquam delectus nulla similique
-          obcaecati a, nemo nobis voluptatum dignissimos alias, modi maxime,
-          incidunt facilis eligendi nostrum!
+          {{ project.description }}
         </p>
       </div>
       <div>
@@ -38,17 +35,13 @@
           Technologies:
         </h6>
         <mat-chip-list aria-label="Fish selection">
-          <mat-chip
-            *ngFor="let skill of ['1', '2', '3']"
-            color="primary"
-            selected
-          >
-            {{ skill }}
+          <mat-chip *ngFor="let tech of techs" color="primary" selected>
+            {{ tech }}
           </mat-chip>
         </mat-chip-list>
       </div>
       <div [ngStyle]="{ marginTop: '15px' }">
-        <button mat-button color="warn" routerLink="/project/id">
+        <button mat-button color="warn" [routerLink]="'/project/' + project.id">
           Show Details
         </button>
       </div>

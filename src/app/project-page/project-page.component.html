@@ -1,0 +1,55 @@
+<section class="project-page">
+  <div class="container">
+    <h1 class="mat-display-3">
+      {{ project.title }}
+    </h1>
+    <mat-divider></mat-divider>
+    <app-slider [images]="project.images"></app-slider>
+    <br />
+    <mat-divider></mat-divider>
+    <div>
+      <h3 class="mat-display-1">
+        Description:
+      </h3>
+      <p>
+        {{ project.description }}
+      </p>
+    </div>
+    <mat-divider></mat-divider>
+    <div [ngStyle]="{ marginBottom: '15px' }">
+      <h3 class="mat-display-1">
+        Preview:
+      </h3>
+      <div class="row">
+        <a
+          target="_blank"
+          mat-raised-button
+          color="primary"
+          [href]="project.code"
+        >
+          Code
+        </a>
+        <a
+          target="_blank"
+          mat-raised-button
+          color="primary"
+          [href]="project.preview"
+          [ngStyle]="{ marginLeft: '15px' }"
+        >
+          preview
+        </a>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div>
+      <h3 class="mat-display-1">
+        Technologies
+      </h3>
+      <mat-chip-list aria-label="Fish selection">
+        <mat-chip *ngFor="let tech of project.techs" color="primary" selected>
+          {{ tech }}
+        </mat-chip>
+      </mat-chip-list>
+    </div>
+  </div>
+</section>

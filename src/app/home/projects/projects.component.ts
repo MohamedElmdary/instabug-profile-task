@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { ProjectsService } from 'app/services/projects.service';
 
 @Component({
   selector: 'app-projects',
@@ -7,6 +8,8 @@ import { BreakpointObserver } from '@angular/cdk/layout';
   styleUrls: ['./projects.component.scss']
 })
 export class ProjectsComponent {
+  readonly projects = this.projectsService.projects;
+
   get isTable() {
     return this.observer.isMatched('(max-width: 768px)');
   }
@@ -15,5 +18,8 @@ export class ProjectsComponent {
     return this.isTable || val === 'grid';
   }
 
-  constructor(private observer: BreakpointObserver) {}
+  constructor(
+    private observer: BreakpointObserver,
+    private projectsService: ProjectsService
+  ) {}
 }

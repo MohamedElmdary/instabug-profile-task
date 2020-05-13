@@ -4,7 +4,7 @@
       <h2 class="mat-display-1">Projects</h2>
       <div [ngStyle]="{ display: isTable ? 'none' : 'block' }">
         <mat-button-toggle-group
-          value="rows"
+          value="grid"
           name="gridType"
           aria-label="Grid Type"
           #gridType="matButtonToggleGroup"
@@ -26,21 +26,12 @@
       class="row projects-row"
       [ngClass]="{ grid: isTable || gridType.value === 'grid' }"
     >
-      <div app-project [isRow]="!isTable && gridType.value === 'rows'"></div>
-      <div app-project [isRow]="!isTable && gridType.value === 'rows'"></div>
-      <div app-project [isRow]="!isTable && gridType.value === 'rows'"></div>
-      <div app-project [isRow]="!isTable && gridType.value === 'rows'"></div>
-      <div app-project [isRow]="!isTable && gridType.value === 'rows'"></div>
-      <div app-project [isRow]="!isTable && gridType.value === 'rows'"></div>
-      <div app-project [isRow]="!isTable && gridType.value === 'rows'"></div>
-      <div app-project [isRow]="!isTable && gridType.value === 'rows'"></div>
-      <div app-project [isRow]="!isTable && gridType.value === 'rows'"></div>
-      <div app-project [isRow]="!isTable && gridType.value === 'rows'"></div>
-      <div app-project [isRow]="!isTable && gridType.value === 'rows'"></div>
-      <div app-project [isRow]="!isTable && gridType.value === 'rows'"></div>
-      <div app-project [isRow]="!isTable && gridType.value === 'rows'"></div>
-      <div app-project [isRow]="!isTable && gridType.value === 'rows'"></div>
-      <div app-project [isRow]="!isTable && gridType.value === 'rows'"></div>
+      <div
+        app-project
+        *ngFor="let project of projects"
+        [project]="project"
+        [isRow]="!isTable && gridType.value === 'rows'"
+      ></div>
     </div>
   </div>
 </section>

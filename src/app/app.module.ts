@@ -14,6 +14,9 @@ import { ProjectsComponent } from './home/projects/projects.component';
 import { ContactsComponent } from './home/contacts/contacts.component';
 import { ProjectComponent } from './home/projects/project/project.component';
 import { FooterComponent } from './home/footer/footer.component';
+import { ProjectPageComponent } from './project-page/project-page.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SliderComponent } from './project-page/slider/slider.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { FooterComponent } from './home/footer/footer.component';
     ProjectsComponent,
     ContactsComponent,
     ProjectComponent,
-    FooterComponent
+    FooterComponent,
+    ProjectPageComponent,
+    PageNotFoundComponent,
+    SliderComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
