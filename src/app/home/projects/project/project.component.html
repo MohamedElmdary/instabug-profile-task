@@ -34,8 +34,8 @@
         <h6 style="font-size: 17px">
           Technologies:
         </h6>
-        <mat-chip-list aria-label="Fish selection">
-          <mat-chip *ngFor="let tech of techs" color="primary" selected>
+        <mat-chip-list>
+          <mat-chip *ngFor="let tech of project.techs" color="primary" selected>
             {{ tech }}
           </mat-chip>
         </mat-chip-list>

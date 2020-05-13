@@ -8,7 +8,9 @@
       menu
     </mat-icon>
   </button>
-  <span>Mohamed</span>
+  <span routerLink="/" [ngStyle]="{ outline: 'none', cursor: 'pointer' }"
+    >Mohamed</span
+  >
   <span class="spacer"></span>
   <ng-template [ngIf]="!isMobile">
     <button

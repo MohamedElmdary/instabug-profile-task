@@ -3,6 +3,10 @@ $image: 50%;
 .contacts {
   padding: 15px 0;
 
+  h2 {
+    margin-bottom: 15px;
+  }
+
   &__form {
     $this: &;
 
